@@ -1,5 +1,7 @@
 package study.racingcar;
 
+import java.util.List;
+
 public class ResultView {
     public static void printInit() {
         System.out.println("실행 결과");
@@ -23,6 +25,17 @@ public class ResultView {
     }
 
     public void printWinners(Winners winners) {
-        System.out.println(winners + "가 최종 우승했습니다.");
+        System.out.println(toStringWinners(winners.getWinners()) + "가 최종 우승했습니다.");
+    }
+
+    private String toStringWinners(List<Car> winners) {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < winners.size()-1; i++) {
+            sb.append(winners.get(i).getName()).append(", ");
+        }
+        sb.append(winners.get(winners.size() - 1));
+
+        return sb.toString();
     }
 }
