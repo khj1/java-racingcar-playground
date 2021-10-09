@@ -20,4 +20,8 @@ public class Cars {
     public List<Car> getCars() {
         return this.cars;
     }
+
+    public void play(List<Car> cars) {
+        cars.forEach(car -> car.race(CarStatus.getRandomStatus()));
+    }
 }

@@ -1,6 +1,5 @@
 package study.racingcar;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -32,5 +31,18 @@ public class RacingCarTest {
         List<Car> carList = cars.getCars();
         assertThat(carList).extracting("name")
                 .containsExactly("carA", "carB", "carC");
+    }
+
+    @Test
+    @DisplayName("자동차는 한칸 전진하거나 가만히 멈춰있는다.")
+    void 전진_또는_정지() {
+        Car carA = new Car("carA");
+        Car carB = new Car("carB");
+
+        carA.race(CarStatus.MOVE);
+        carB.race(CarStatus.STOP);
+
+        assertThat(carA.getPosition()).isEqualTo(1);
+        assertThat(carB.getPosition()).isEqualTo(0);
     }
 }
