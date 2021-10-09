@@ -11,6 +11,11 @@ public class Cars {
         this.cars = addCars(namesWithComma.split(","));
     }
 
+    // 테스트용
+    Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     private List<Car> addCars(String[] names) {
         return Arrays.stream(names)
                 .map(Car::new)
@@ -23,5 +28,14 @@ public class Cars {
 
     public void play(List<Car> cars) {
         cars.forEach(car -> car.race(CarStatus.getRandomStatus()));
+    }
+
+    public Winners getWinners(int gameCounts) {
+        Winners winners = new Winners();
+        cars.stream()
+                .filter(car -> car.isWinner(gameCounts))
+                .forEach(winners::addWinner);
+
+        return winners;
     }
 }

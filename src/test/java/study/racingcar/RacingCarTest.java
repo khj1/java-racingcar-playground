@@ -3,6 +3,7 @@ package study.racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,5 +45,28 @@ public class RacingCarTest {
 
         assertThat(carA.getPosition()).isEqualTo(1);
         assertThat(carB.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다.")
+    void 우승() {
+        int gameCounts = 2;
+        Cars cars = getCarsWithGameEnd(gameCounts);
+
+        Winners winners = cars.getWinners(gameCounts);
+        assertThat(winners.getWinners()).extracting("name").containsExactly("carA", "carC");
+    }
+
+    Cars getCarsWithGameEnd(int gameCounts) {
+        Car carA = new Car("carA");
+        Car carB = new Car("carB");
+        Car carC = new Car("carC");
+
+        for (int i = 0; i < gameCounts; i++) {
+            carA.race(CarStatus.MOVE);
+            carB.race(CarStatus.STOP);
+            carC.race(CarStatus.MOVE);
+        }
+        return new Cars(Arrays.asList(carA, carB, carC));
     }
 }

@@ -22,4 +22,8 @@ public class Car {
             this.position ++;
         }
     }
+
+    public boolean isWinner(int gameCounts) {
+        return position == gameCounts;
+    }
 }

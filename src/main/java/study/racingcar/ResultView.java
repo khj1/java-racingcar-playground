@@ -22,7 +22,7 @@ public class ResultView {
         return sb.toString();
     }
 
-    public void printWinners(PlayResult result) {
-        System.out.println(result + "가 최종 우승했습니다.");
+    public void printWinners(Winners winners) {
+        System.out.println(winners + "가 최종 우승했습니다.");
     }
 }
