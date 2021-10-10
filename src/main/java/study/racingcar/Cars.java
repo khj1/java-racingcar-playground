@@ -8,7 +8,16 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(String namesWithComma) {
-        this.cars = addCars(namesWithComma.split(","));
+        if (validation(namesWithComma)) {
+            this.cars = addCars(namesWithComma.split(","));
+        }
+    }
+
+    private boolean validation(String namesWithComma) {
+        if (namesWithComma.contains(",")) {
+            return true;
+        }
+        throw new IllegalArgumentException("자동차는 2대 이상이어야 하며 ,로 구분되어야합니다.");
     }
 
     // 테스트용

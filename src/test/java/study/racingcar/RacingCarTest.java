@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarTest {
 
@@ -23,6 +22,13 @@ public class RacingCarTest {
     void 자동차_이름_5자_초과() {
         assertThatThrownBy(() -> new Car("666666"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("자동차는 2대 이상이어야 하며 ,로 구분되어야한다.")
+    void 자동차_2대이상_세미콜론구분() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Cars("carA"));
     }
 
     @Test
