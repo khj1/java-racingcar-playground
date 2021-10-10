@@ -9,6 +9,7 @@ public class ResultView {
 
     public static void printResults(Cars cars) {
         cars.getCars().forEach(ResultView::printResult);
+        System.out.println();
     }
 
     private static void printResult(Car car) {
@@ -24,17 +25,17 @@ public class ResultView {
         return sb.toString();
     }
 
-    public void printWinners(Winners winners) {
+    public static void printWinners(Winners winners) {
         System.out.println(toStringWinners(winners.getWinners()) + "가 최종 우승했습니다.");
     }
 
-    private String toStringWinners(List<Car> winners) {
+    private static String toStringWinners(List<Car> winners) {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < winners.size()-1; i++) {
             sb.append(winners.get(i).getName()).append(", ");
         }
-        sb.append(winners.get(winners.size() - 1));
+        sb.append(winners.get(winners.size() - 1).getName());
 
         return sb.toString();
     }

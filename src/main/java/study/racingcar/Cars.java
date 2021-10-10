@@ -2,6 +2,7 @@ package study.racingcar;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -32,7 +33,7 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return this.cars;
+        return cars;
     }
 
     public void play(List<Car> cars) {
@@ -41,10 +42,19 @@ public class Cars {
 
     public Winners getWinners(int gameCounts) {
         Winners winners = new Winners();
+        Integer maxPosition = getMaxPosition();
+
         cars.stream()
-                .filter(car -> car.isWinner(gameCounts))
+                .filter(car -> car.isWinner(maxPosition))
                 .forEach(winners::addWinner);
 
         return winners;
+    }
+
+    private Integer getMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(NoSuchElementException::new);
     }
 }

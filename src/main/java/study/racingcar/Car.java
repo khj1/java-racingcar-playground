@@ -23,7 +23,7 @@ public class Car {
         }
     }
 
-    public boolean isWinner(int gameCounts) {
-        return position == gameCounts;
+    public boolean isWinner(int maxPosition) {
+        return position == maxPosition;
     }
 }
