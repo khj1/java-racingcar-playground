@@ -19,4 +19,5 @@ public class CarsTest {
 
         assertThat(carsA).isEqualTo(carsB);
     }
+
 }

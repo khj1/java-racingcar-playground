@@ -1,12 +1,23 @@
 package study.racingcar;
 
+import javax.swing.text.Position;
 import java.util.Objects;
 
 public class Car {
     private final CarName name;
+    private final CarPosition position;
 
     public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
         this.name = new CarName(name);
+        this.position = new CarPosition(position);
+    }
+
+    public void move() {
+        position.move();
     }
 
     @Override
