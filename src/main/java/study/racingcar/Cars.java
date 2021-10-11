@@ -23,6 +23,20 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
+    public List<Car> findWinner() {
+        int maxPosition = getMaxPosition();
+        return cars.stream()
+                .filter(car -> car.isSamePosition(maxPosition))
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPositionValue)
+                .max()
+                .orElse(0);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

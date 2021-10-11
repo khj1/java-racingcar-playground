@@ -13,6 +13,14 @@ public class CarPosition {
         position++;
     }
 
+    public boolean isSame(int maxPosition) {
+        return position == maxPosition;
+    }
+
+    public int getValue() {
+        return position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -25,4 +33,5 @@ public class CarPosition {
     public int hashCode() {
         return Objects.hash(position);
     }
+
 }

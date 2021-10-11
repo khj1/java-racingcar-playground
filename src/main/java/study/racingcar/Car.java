@@ -20,6 +20,15 @@ public class Car {
         position.move();
     }
 
+    public boolean isSamePosition(int maxPosition) {
+        return position.isSame(maxPosition);
+    }
+
+
+    public int getPositionValue() {
+        return position.getValue();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -32,4 +41,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name);
     }
+
 }

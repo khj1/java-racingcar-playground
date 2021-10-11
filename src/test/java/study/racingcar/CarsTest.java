@@ -20,4 +20,16 @@ public class CarsTest {
         assertThat(carsA).isEqualTo(carsB);
     }
 
+    @Test
+    @DisplayName("우승자는 한명 이상일 수 있다.")
+    void findWinner() {
+        Car carA = new Car("carA", 1);
+        Car carB = new Car("carB", 0);
+        Car carC = new Car("carC", 1);
+
+        Cars cars = new Cars(Arrays.asList(carA, carB, carC));
+
+        assertThat(cars.findWinner()).extracting("name").containsExactly(new CarName("carA"), new CarName("carC"));
+    }
+
 }
