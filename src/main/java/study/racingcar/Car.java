@@ -16,8 +16,10 @@ public class Car {
         this.position = new CarPosition(position);
     }
 
-    public void move() {
-        position.move();
+    public void move(MoveStrategy strategy) {
+        if (strategy.movable()) {
+            position.move();
+        }
     }
 
     public boolean isSamePosition(int maxPosition) {
@@ -41,5 +43,4 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name);
     }
-
 }

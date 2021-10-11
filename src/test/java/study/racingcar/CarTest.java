@@ -39,7 +39,9 @@ public class CarTest {
         Car carA = new Car("carA");
         Car carB = new Car("carB");
 
-        carA.move();
+        MoveStrategy strategy = () -> true;
+
+        carA.move(strategy);
 
         assertThat(carA).isEqualTo(new Car("carA", 1));
         assertThat(carB).isEqualTo(new Car("carB", 0));
